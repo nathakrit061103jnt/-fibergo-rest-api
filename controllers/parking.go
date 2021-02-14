@@ -1,10 +1,9 @@
 package controllers
 
 import (
+	"github.com/fiber_go_api/configs"
 	"github.com/fiber_go_api/models"
 	"github.com/gofiber/fiber/v2"
-
-	"github.com/fiber_go_api/configs"
 )
 
 var err error

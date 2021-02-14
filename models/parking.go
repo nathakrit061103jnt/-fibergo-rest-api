@@ -1,5 +1,9 @@
 package models
 
+import (
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+)
+
 type Tbl_parkings struct {
 	Pk_id    int    `json:"pk_id"`
 	Pk_name  string `json:"pk_name"`

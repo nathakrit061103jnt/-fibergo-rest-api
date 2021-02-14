@@ -1,11 +1,12 @@
 package models
 
 import (
-	"github.com/jinzhu/gorm"
+	_ "gorm.io/gorm"
 )
 
 type Student struct {
-	gorm.Model
+	// gorm.Model
+	ID         int    `json:"id" gorm:"primaryKey;autoIncrement"`
 	First_Name string `json:"first_name"`
 	Last_Name  string `json:"last_name"`
 	Age        int    `json:"age"`

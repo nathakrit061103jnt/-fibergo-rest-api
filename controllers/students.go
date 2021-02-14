@@ -1,8 +1,6 @@
 package controllers
 
 import (
-	"fmt"
-
 	"github.com/fiber_go_api/configs"
 	"github.com/fiber_go_api/models"
 	"github.com/gofiber/fiber/v2" // new
@@ -46,16 +44,26 @@ func UpdateStudent(c *fiber.Ctx) error {
 // }
 
 func NewStudent(c *fiber.Ctx) error {
-
+	db = configs.InitDB()
 	var student models.Student
-	student.Age = 14
-	student.Class = "12"
-	student.First_Name = "Ali"
-	student.Last_Name = "Kalim"
+
+	c.BodyParser(&student)
+
 	db.Create(&student)
-	fmt.Println("Yazıldı")
 	c.JSON(&student)
 	// defer db.Close()
 	return c.JSON(&student)
 
+}
+
+func DeleteStudent(c *fiber.Ctx) error {
+	db := configs.InitDB()
+	id := c.Params("id")
+	db = configs.InitDB()
+
+	var student models.Student
+	db.First(&student, id)
+
+	db.Delete(&student)
+	return c.JSON(&student)
 }
